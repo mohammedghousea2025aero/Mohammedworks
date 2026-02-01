@@ -1,0 +1,39 @@
+# Personal Expense Tracker
+# Author: Mohammed Ghouse
+
+expenses = []
+
+def add_expense():
+    item = input("Enter expense name: ")
+    amount = input("Enter amount: ")
+    if not amount.replace('.', '').isdigit():
+        print("Please enter a valid number")
+        return
+    expenses.append({"item": item, "amount": float(amount)})
+    print(f"Added {item} - ₹{amount}")
+
+def show_expenses():
+    if not expenses:
+        print("No expenses added yet.")
+        return
+    print("\n--- Your Expenses ---")
+    total = 0
+    for e in expenses:
+        print(f"{e['item']}: ₹{e['amount']}")
+        total += e['amount']
+    print(f"Total Spending: ₹{total}\n")
+
+while True:
+    print("1. Add Expense")
+    print("2. Show Expenses")
+    print("3. Exit")
+    choice = input("Choose an option: ")
+    if choice == "1":
+        add_expense()
+    elif choice == "2":
+        show_expenses()
+    elif choice == "3":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice")
